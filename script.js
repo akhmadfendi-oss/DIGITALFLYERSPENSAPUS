@@ -148,8 +148,4 @@ function handleRecipient() {
     }
 }
 
-// Gallery Logic (Basic Placeholder)
-let currentSlide = 0;
-function moveSlide(direction) {
-    // Implementation for gallery slider
-}
+// Gallery Logic placeholder removed (not used)
