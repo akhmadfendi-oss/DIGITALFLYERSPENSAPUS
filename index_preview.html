@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREVIEW: Undangan Pelepasan Murid - Tema Javanese Minimalist</title>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { DEFAULT: '#d4af37', dark: '#aa8d2e' },
+                        dark: { DEFAULT: '#111111', lighter: '#1a1a1a' },
+                        cream: { DEFAULT: '#faf9f6', dark: '#f0ede6' },
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #111111; color: #faf9f6; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .font-heading { font-family: 'Playfair Display', serif; }
+        
+        /* Gunungan Tile Background */
+        .gunungan-tile {
+            background-color: #111111;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' fill='none' stroke='rgba(212, 175, 55, 0.05)' stroke-width='1'%3E%3Cpath d='M50 5L10 140H90L50 5Z'/%3E%3Cpath d='M50 20L20 130H80L50 20Z' opacity='0.5'/%3E%3C/svg%3E");
+            background-size: 60px 90px;
+            background-repeat: repeat;
+        }
+
+        /* Minimalist Corporate Utilities */
+        .thin-border { border: 1px solid rgba(212, 175, 55, 0.2); }
+        .accent-line { width: 40px; height: 2px; background-color: #d4af37; margin-bottom: 1.5rem; }
+        
+        /* Overlapping Canon-style Box */
+        .overlap-box { 
+            position: relative; 
+            margin-top: -150px; 
+            z-index: 10; 
+            background: #1a1a1a; 
+            padding: 4rem; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        @media (max-width: 768px) {
+            .overlap-box { margin-top: -50px; padding: 2rem; }
+        }
+
+        /* Hover Effects */
+        .hover-lift { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease; }
+        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(212,175,55,0.08); border-color: #d4af37; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // --- COMPONENTS ---
+
+        const GununganSVG = ({ className }) => (
+            <svg viewBox="0 0 100 150" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 5L10 140H90L50 5Z" stroke="currentColor" strokeWidth="1" />
+                <path d="M50 20L20 130H80L50 20Z" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
+                <circle cx="50" cy="80" r="10" stroke="currentColor" strokeWidth="1" />
+                <path d="M40 80H60M50 70V90" stroke="currentColor" strokeWidth="1" />
+                <path d="M30 140C30 120 40 110 50 110C60 110 70 120 70 140" stroke="currentColor" strokeWidth="1" />
+            </svg>
+        );
+
+        const LoadingScreen = () => (
+            <div id="loading-screen" className="fixed inset-0 z-[100] bg-dark flex flex-col items-center justify-center text-center p-6">
+                <div className="loading-content opacity-0">
+                    <GununganSVG className="w-16 h-16 text-gold mb-6 mx-auto" />
+                    <h1 className="font-heading text-2xl text-gold tracking-widest uppercase">
+                        SMP Negeri 1 Pringapus
+                    </h1>
+                </div>
+            </div>
+        );
+
+        const MusicButton = ({ isPlaying, toggleMusic }) => (
+            <div className="fixed bottom-8 right-8 z-[60]">
+                <button
+                    onClick={toggleMusic}
+                    className="bg-gold p-4 rounded-full shadow-xl flex items-center justify-center transition-all hover:scale-105 active:scale-95 text-dark"
+                >
+                    <i data-lucide={isPlaying ? "volume-2" : "volume-x"} className="w-5 h-5"></i>
+                </button>
+            </div>
+        );
+
+        const HeroSection = ({ onOpen }) => (
+            <section className="relative min-h-screen flex flex-col md:flex-row gunungan-tile">
+                {/* Left: Text & CTA */}
+                <div className="w-full md:w-1/2 flex items-center p-8 md:p-20 z-10 hero-text bg-dark/80 backdrop-blur-sm">
+                    <div>
+                        <div className="w-20 h-20 mb-12 opacity-0 -translate-y-4 logo-anim">
+                            <img src="logo pringaus.jpg.jpeg" alt="Logo" className="w-full h-full object-contain" onError={e => e.target.style.display='none'} />
+                        </div>
+                        <div className="accent-line opacity-0 scale-x-0 line-anim origin-left"></div>
+                        <h2 className="text-gold tracking-[0.3em] text-sm mb-4 uppercase font-semibold opacity-0 -translate-y-4 text-anim">Tahun Ajaran 2025/2026</h2>
+                        <h1 className="font-heading text-5xl md:text-7xl text-cream leading-tight uppercase font-bold mb-8 opacity-0 -translate-y-4 text-anim">
+                            Pelepasan <br/>Murid <br/>Kelas IX
+                        </h1>
+                        <p className="text-cream/60 text-lg mb-12 font-light max-w-md opacity-0 -translate-y-4 text-anim">
+                            Berakar pada Budaya, Bertumbuh Menuju Dunia.
+                        </p>
+                        <button 
+                            onClick={onOpen} 
+                            className="bg-gold text-dark px-10 py-4 rounded-none font-bold tracking-widest transition-all hover:bg-cream flex items-center gap-4 opacity-0 text-anim group"
+                        >
+                            BUKA UNDANGAN
+                            <i data-lucide="arrow-right" className="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+
+                {/* Right: Large Image Mosaic/Banner */}
+                <div className="w-full md:w-1/2 h-[50vh] md:h-screen relative overflow-hidden hero-image opacity-0">
+                    <img src="DVS00277.jpg" alt="Hero" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/30"></div>
+                </div>
+            </section>
+        );
+
+        const InvitationText = () => (
+            <section className="gunungan-tile pb-24 section-anim relative">
+                {/* Large Background Image like Canon's Sustainability banner */}
+                <div className="w-full h-[60vh] overflow-hidden relative">
+                    <img src="DVS00266.jpg" alt="Background" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-dark/60"></div>
+                </div>
+                
+                {/* Overlapping Box */}
+                <div className="container mx-auto px-6 max-w-4xl relative">
+                    <div className="overlap-box text-center">
+                        <GununganSVG className="w-12 h-12 text-gold mx-auto mb-8" />
+                        <h2 className="font-heading text-3xl text-gold mb-8 uppercase tracking-widest">Salam Hangat</h2>
+                        <p className="text-cream/80 leading-relaxed text-lg mb-6 font-light">
+                            Dengan penuh rasa syukur dan bangga, kami mengundang murid kelas IX beserta orang tua/wali murid untuk hadir dalam acara Pelepasan Murid Kelas IX SMP Negeri 1 Pringapus Tahun Ajaran 2025/2026.
+                        </p>
+                        <p className="text-cream/80 leading-relaxed text-lg mb-8 font-light">
+                            Acara ini menjadi momen istimewa untuk mengenang perjalanan, merayakan pencapaian, dan mengantar langkah baru para murid menuju masa depan yang lebih luas.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const EventDetails = () => (
+            <section className="py-24 bg-dark section-anim">
+                <div className="container mx-auto px-6 max-w-6xl">
+                    <div className="accent-line mx-auto"></div>
+                    <h2 className="font-heading text-3xl md:text-4xl text-gold mb-16 text-center uppercase tracking-widest">Informasi Acara</h2>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-gold/20">
+                        {[
+                            { icon: 'calendar', label: "Tanggal", value: "Sabtu, 23 Mei 2026" },
+                            { icon: 'clock', label: "Waktu", value: "07.00 WIB s.d. selesai" },
+                            { icon: 'map-pin', label: "Tempat", value: "Lapangan SMP N 1 Pringapus" },
+                            { icon: 'award', label: "Acara", value: "Pelepasan Murid Kelas IX" },
+                        ].map((item, i) => (
+                            <div key={i} className="p-12 border-b border-r border-gold/20 hover:bg-white/5 transition-colors flex items-start gap-6">
+                                <div className="text-gold mt-1"><i data-lucide={item.icon} className="w-8 h-8"></i></div>
+                                <div>
+                                    <h3 className="text-gold/50 text-sm uppercase tracking-widest mb-2 font-semibold">{item.label}</h3>
+                                    <p className="text-cream font-heading text-2xl">{item.value}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        );
+
+        const DresscodeSection = () => (
+            <section className="py-24 gunungan-tile section-anim">
+                <div className="container mx-auto px-6 max-w-5xl">
+                    <div className="accent-line"></div>
+                    <h2 className="font-heading text-3xl md:text-4xl text-gold mb-12 uppercase tracking-widest">Ketentuan Busana</h2>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="bg-dark/80 backdrop-blur-md p-10 hover-lift border border-gold/20 border-t-4 border-t-gold">
+                            <h3 className="font-heading text-2xl text-cream mb-4">Tamu Putra</h3>
+                            <p className="text-cream/70 font-light leading-relaxed">Kemeja putih, dasi, jas hitam, celana hitam, dan bersepatu formal.</p>
+                        </div>
+                        <div className="bg-dark/80 backdrop-blur-md p-10 hover-lift border border-gold/20 border-t-4 border-t-gold">
+                            <h3 className="font-heading text-2xl text-cream mb-4">Tamu Putri</h3>
+                            <p className="text-cream/70 font-light leading-relaxed">Kebaya tradisional atau pakaian formal nasional yang rapi dan sopan.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const RundownSection = () => (
+            <section className="py-24 bg-dark section-anim">
+                <div className="container mx-auto px-6 max-w-4xl">
+                    <div className="accent-line mx-auto"></div>
+                    <h2 className="font-heading text-3xl md:text-4xl text-gold mb-16 text-center uppercase tracking-widest">Susunan Acara</h2>
+                    
+                    <div className="space-y-6">
+                        {[
+                            "Pembukaan", "Menyanyikan Lagu Indonesia Raya", "Sambutan Kepala Sekolah", "Sambutan Perwakilan Orang Tua/Wali Murid", "Prosesi Pelepasan Murid Kelas IX", "Penampilan Seni dan Budaya", "Pengumuman / Apresiasi Murid", "Doa Bersama", "Penutup", "Sesi Foto Bersama"
+                        ].map((text, i) => (
+                            <div key={i} className="flex items-center gap-6 p-6 border border-gold/20 hover:border-gold hover:shadow-lg transition-all bg-dark rounded-sm">
+                                <span className="text-gold font-heading text-2xl w-12 text-center opacity-50">{String(i+1).padStart(2, '0')}</span>
+                                <div className="w-[1px] h-10 bg-gold/20"></div>
+                                <h4 className="text-cream text-lg font-light">{text}</h4>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        );
+
+        const GalleryCarousel = () => {
+            const [index, setIndex] = useState(0);
+            const images = ["DVS00232.jpg", "DVS00234.jpg", "DVS00236.jpg", "DVS00257.jpg", "DVS00266.jpg", "DVS00277.jpg", "DVS00290.jpg"];
+            
+            useEffect(() => {
+                const interval = setInterval(() => setIndex(prev => (prev + 1) % images.length), 4000);
+                return () => clearInterval(interval);
+            }, []);
+
+            return (
+                <section className="py-24 gunungan-tile text-white section-anim">
+                    <div className="container mx-auto px-6 max-w-6xl">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                            <div>
+                                <div className="accent-line bg-gold"></div>
+                                <h2 className="font-heading text-3xl md:text-4xl text-gold uppercase tracking-widest">Galeri Kenangan</h2>
+                            </div>
+                            <p className="text-cream/60 font-light max-w-md">Setiap foto menyimpan cerita, tawa, perjuangan, dan kebanggaan.</p>
+                        </div>
+                        
+                        <div className="relative aspect-video overflow-hidden border border-gold/20">
+                            <img src={images[index]} className="w-full h-full object-cover" onError={e => e.target.style.display='none'} />
+                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+                                {images.map((_, i) => (
+                                    <div key={i} className={`h-1 transition-all duration-300 ${i === index ? 'w-8 bg-gold' : 'w-4 bg-white/30'}`}></div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const MainApp = () => {
+            const [loading, setLoading] = useState(true);
+            const [isOpen, setIsOpen] = useState(false);
+            const [isPlaying, setIsPlaying] = useState(false);
+            const audioRef = useRef(null);
+
+            useEffect(() => {
+                gsap.registerPlugin(ScrollTrigger);
+                audioRef.current = new Audio("Sampai Jumpa - Endank Soekamti ( Emotional Piano Cover ).mp3");
+                audioRef.current.loop = true;
+                
+                // Loading Animation
+                const tl = gsap.timeline();
+                tl.to(".loading-content", { opacity: 1, duration: 1 })
+                  .to(".loading-content", { opacity: 0, duration: 0.8, delay: 1, onComplete: () => setLoading(false) });
+            }, []);
+
+            useEffect(() => {
+                if (!loading && !isOpen) {
+                    // Hero Animation
+                    const tl = gsap.timeline();
+                    tl.to(".hero-image", { opacity: 1, duration: 1.5, ease: "power2.inOut" })
+                      .to(".logo-anim", { opacity: 1, y: 0, duration: 0.8 }, "-=1")
+                      .to(".line-anim", { opacity: 1, scaleX: 1, duration: 0.8 }, "-=0.6")
+                      .to(".text-anim", { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }, "-=0.6");
+                }
+            }, [loading, isOpen]);
+
+            useEffect(() => {
+                if (isOpen) {
+                    lucide.createIcons();
+                    // Scroll Animations for sections
+                    gsap.utils.toArray(".section-anim").forEach(section => {
+                        gsap.fromTo(section, 
+                            { opacity: 0, y: 30 },
+                            { opacity: 1, y: 0, duration: 1, ease: "power2.out", scrollTrigger: { trigger: section, start: "top 85%" } }
+                        );
+                    });
+                }
+            }, [isOpen]);
+
+            const toggleMusic = () => {
+                if (isPlaying) {
+                    audioRef.current.pause();
+                } else {
+                    audioRef.current.play().catch(e => console.log(e));
+                }
+                setIsPlaying(!isPlaying);
+            };
+
+            const handleOpen = () => {
+                setIsOpen(true);
+                audioRef.current.play().then(() => setIsPlaying(true)).catch(e => console.log(e));
+                window.scrollTo(0, 0);
+            };
+
+            return (
+                <div className="antialiased">
+                    {loading && <LoadingScreen />}
+                    {!loading && (
+                        <div>
+                            <MusicButton isPlaying={isPlaying} toggleMusic={toggleMusic} />
+                            {!isOpen ? (
+                                <HeroSection onOpen={handleOpen} />
+                            ) : (
+                                <div id="invitation-content">
+                                    <HeroSection onOpen={() => {}} />
+                                    <InvitationText />
+                                    <EventDetails />
+                                    <DresscodeSection />
+                                    <RundownSection />
+                                    <GalleryCarousel />
+                                    <footer className="py-16 bg-black text-center text-white/40 font-light text-sm tracking-widest uppercase border-t border-gold/10">
+                                        <div className="w-12 h-12 mx-auto mb-6 opacity-30"><GununganSVG /></div>
+                                        <p>SMP Negeri 1 Pringapus • Tahun Ajaran 2025/2026</p>
+                                    </footer>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<MainApp />);
+    </script>
+</body>
+</html>

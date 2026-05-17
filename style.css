@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+    --primary: #d4af37; /* Royal Gold */
+    --primary-light: #f1d279;
+    --primary-dark: #aa8d2e;
+    --bg-dark: #0a0a0a;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --text-light: #f5f5dc;
+    --text-muted: rgba(245, 245, 220, 0.6);
+    --glass: rgba(20, 20, 20, 0.8);
+    --border-gold: rgba(212, 175, 55, 0.3);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Glassmorphism Effect */
+.glass {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-gold);
+    border-radius: 20px;
+}
+
+/* Gold Gradient Text */
+.text-gold-gradient {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-light), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 1s forwards;
+}
+
+/* Buttons */
+.btn-gold {
+    background: linear-gradient(45deg, var(--primary-dark), var(--primary-light));
+    color: var(--bg-dark);
+    padding: 12px 30px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-gold:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background: url('gunungan-bg.jpg') center/cover no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.9) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+}
+
+.pentagon-logo {
+    width: 120px;
+    height: 120px;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    background: var(--primary);
+    padding: 3px;
+    object-fit: cover;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    letter-spacing: 4px;
+    margin: 1rem 0;
+    text-transform: uppercase;
+}
+
+/* Countdown */
+.countdown-container {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 2.5rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.countdown-item span {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.countdown-item label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+/* Invitation Card */
+.invitation-card {
+    padding: 4rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.recipient-box {
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+    padding: 0 2rem 0.5rem;
+}
+
+/* Details Grid */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.detail-card {
+    padding: 3rem 2rem;
+    transition: var(--transition);
+}
+
+.detail-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-10px);
+}
+
+.detail-card i {
+    width: 48px;
+    height: 48px;
+}
+
+/* Gallery Slider */
+.gallery-slider {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide-placeholder {
+    padding: 5rem;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--glass);
+    border: 1px solid var(--border-gold);
+    color: var(--primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn.prev { left: 1rem; }
+.slider-btn.next { right: 1rem; }
+
+/* Admin Trigger */
+.admin-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--glass);
+    border: 1px solid var(--border-gold);
+    color: var(--primary);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Admin Modal */
+.admin-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.8);
+    padding: 2rem;
+}
+
+.admin-modal.active {
+    display: flex;
+}
+
+.admin-content {
+    background: #1a1a1a;
+    border: 1px solid var(--border-gold);
+    border-radius: 20px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.admin-form label {
+    display: block;
+    color: var(--primary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.admin-form input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.admin-form input:focus {
+    border-color: var(--primary);
+    background: rgba(255,255,255,0.1);
+}
+
