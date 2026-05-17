@@ -1,353 +1,641 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pelepasan Murid Kelas IX - SMP Negeri 1 Pringapus</title>
-    
-    <!-- Scripts -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Undangan Pelepasan Murid Kelas IX SMP Negeri 1 Pringapus Tahun Ajaran 2025/2026">
+<title>Pelepasan Kelas IX · SMP Negeri 1 Pringapus · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<!-- Menggunakan Font Awesome untuk ikon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ══════════════════════════════════════
+   ROOT VARIABLES
+══════════════════════════════════════ */
+:root{
+  --black:#07070a;
+  --black2:#0e0e14;
+  --black3:#141420;
+  --gold:#C9A84C;
+  --gold2:#E8C97A;
+  --gold3:#F5D98E;
+  --gold-dk:#8B6914;
+  --gold-dp:#4a3508;
+  --cream:#F5ECD7;
+  --cream2:#FAF5EB;
+  --brown:#3D2B1F;
+  --blue:#1A3A6C;
+  --white:#FFFFFF;
+  --font-head:'Playfair Display',Georgia,serif;
+  --font-cinzel:'Cinzel',serif;
+  --font-body:'Poppins',sans-serif;
+  --font-corm:'Cormorant Garamond',Georgia,serif;
+}
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: { DEFAULT: '#d4af37', dark: '#aa8d2e' },
-                        dark: { DEFAULT: '#111111', lighter: '#1a1a1a' },
-                        cream: { DEFAULT: '#faf9f6', dark: '#f0ede6' },
-                    },
-                    fontFamily: {
-                        heading: ['Playfair Display', 'serif'],
-                        body: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+/* ══════════════════════════════════════
+   BASE RESET
+══════════════════════════════════════ */
+*,::before,::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--black);color:var(--cream);overflow-x:hidden;line-height:1.7}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--gold-dk);border-radius:2px}
 
-    <style>
-        body { background-color: #111111; color: #faf9f6; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .font-heading { font-family: 'Playfair Display', serif; }
-        
-        /* Gunungan Tile Background */
-        .gunungan-tile {
-            background-color: #111111;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' fill='none' stroke='rgba(212, 175, 55, 0.05)' stroke-width='1'%3E%3Cpath d='M50 5L10 140H90L50 5Z'/%3E%3Cpath d='M50 20L20 130H80L50 20Z' opacity='0.5'/%3E%3C/svg%3E");
-            background-size: 60px 90px;
-            background-repeat: repeat;
-        }
+/* ══════════════════════════════════════
+   BATIK TEXTURE GLOBAL
+══════════════════════════════════════ */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(201,168,76,.018) 20px,rgba(201,168,76,.018) 21px),
+    repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(201,168,76,.012) 20px,rgba(201,168,76,.012) 21px);
+}
 
-        /* Minimalist Corporate Utilities */
-        .thin-border { border: 1px solid rgba(212, 175, 55, 0.2); }
-        .accent-line { width: 40px; height: 2px; background-color: #d4af37; margin-bottom: 1.5rem; }
-        
-        /* Overlapping Canon-style Box */
-        .overlap-box { 
-            position: relative; 
-            margin-top: -150px; 
-            z-index: 10; 
-            background: #1a1a1a; 
-            padding: 4rem; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        @media (max-width: 768px) {
-            .overlap-box { margin-top: -50px; padding: 2rem; }
-        }
+/* ══════════════════════════════════════
+   FADE-IN ANIMATIONS
+══════════════════════════════════════ */
+.fi{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+.fi.show{opacity:1;transform:translateY(0)}
+.fi-l{opacity:0;transform:translateX(-30px);transition:opacity .85s ease,transform .85s ease}
+.fi-l.show{opacity:1;transform:translateX(0)}
+.fi-r{opacity:0;transform:translateX(30px);transition:opacity .85s ease,transform .85s ease}
+.fi-r.show{opacity:1;transform:translateX(0)}
 
-        /* Hover Effects */
-        .hover-lift { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease; }
-        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(212,175,55,0.08); border-color: #d4af37; }
-    </style>
+/* ══════════════════════════════════════
+   LOADING SCREEN
+══════════════════════════════════════ */
+#loading{
+  position:fixed;inset:0;z-index:9999;
+  background:radial-gradient(ellipse at center,#0f0f1a 0%,#050508 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:28px;padding:24px;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#loading.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.ld-logo{width:120px;height:120px;
+  filter:drop-shadow(0 0 20px rgba(201,168,76,.4));
+  animation:logoPulse 2.5s ease-in-out infinite;object-fit:contain;}
+@keyframes logoPulse{0%,100%{filter:drop-shadow(0 0 15px rgba(201,168,76,.3))}50%{filter:drop-shadow(0 0 30px rgba(201,168,76,.6))}}
+.ld-subtitle{font-family:var(--font-cinzel);font-size:clamp(10px,2.5vw,13px);letter-spacing:5px;color:var(--gold2);text-transform:uppercase;text-align:center}
+.ld-title{font-family:var(--font-head);font-size:clamp(20px,5vw,32px);font-weight:700;text-align:center;color:var(--white);line-height:1.2}
+.ld-shimmer{position:relative;overflow:hidden;font-family:var(--font-cinzel);font-size:clamp(11px,2.5vw,14px);letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.ld-shimmer::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(245,217,142,.6) 50%,transparent 100%);animation:shimmer 2s linear infinite}
+@keyframes shimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.ld-divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.open-btn{
+  margin-top:8px;
+  font-family:var(--font-cinzel);font-size:13px;letter-spacing:3px;text-transform:uppercase;
+  color:#000;background:linear-gradient(135deg,var(--gold-dk),var(--gold),var(--gold2));
+  padding:14px 36px;border-radius:2px;
+  box-shadow:0 4px 24px rgba(201,168,76,.35);
+  transition:all .3s ease;
+}
+.open-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.5)}
+
+/* ══════════════════════════════════════
+   ORNAMENTS / SHARED
+══════════════════════════════════════ */
+.gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto}
+.ornament-div{display:flex;align-items:center;gap:14px;margin:20px auto;max-width:300px}
+.ornament-div .line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.ornament-div .dot-m{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+.section-label{font-family:var(--font-cinzel);font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:10px}
+.section-title{font-family:var(--font-head);font-size:clamp(26px,6vw,44px);font-weight:700;text-align:center;color:var(--white);line-height:1.2;margin-bottom:6px}
+.section-title em{background:linear-gradient(135deg,var(--gold3),var(--gold),var(--gold-dk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal}
+.container{max-width:720px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+
+/* ══════════════════════════════════════
+   WAYANG GUNUNGAN SVG
+══════════════════════════════════════ */
+.gunungan{pointer-events:none;user-select:none}
+
+/* ══════════════════════════════════════
+   HERO SECTION
+══════════════════════════════════════ */
+#hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 50% 60%,#0e0e1e 0%,#05050a 100%);
+  padding:80px 20px;
+}
+.hero-gunungan{position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);opacity:.05;z-index:0}
+.hero-gunungan-l{position:absolute;left:-60px;bottom:20px;opacity:.06;z-index:0}
+.hero-gunungan-r{position:absolute;right:-60px;bottom:20px;opacity:.06;z-index:0;transform:scaleX(-1)}
+#hero::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--gold-dk) 20%,var(--gold2) 50%,var(--gold-dk) 80%,transparent)}
+#hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(201,168,76,.07) 0%,transparent 65%);pointer-events:none;z-index:0}
+.hero-inner{position:relative;z-index:2;text-align:center;max-width:560px;width:100%}
+.hero-logo{width:130px;height:130px;margin:0 auto 28px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(201,168,76,.5));animation:heroLogoPulse 4s ease-in-out infinite;}
+@keyframes heroLogoPulse{0%,100%{filter:drop-shadow(0 0 16px rgba(201,168,76,.4))}50%{filter:drop-shadow(0 0 32px rgba(201,168,76,.65))}}
+.hero-pre{font-family:var(--font-cinzel);font-size:clamp(9px,2vw,12px);letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.hero-title{font-family:var(--font-head);font-size:clamp(32px,9vw,64px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:8px}
+.hero-title .accent{background:linear-gradient(135deg,var(--gold3),var(--gold),var(--gold-dk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.hero-school{font-family:var(--font-cinzel);font-size:clamp(12px,3vw,16px);letter-spacing:3px;color:var(--gold2);margin-bottom:4px}
+.hero-year{font-family:var(--font-body);font-size:14px;color:rgba(245,236,215,.5);font-style:italic;margin-bottom:26px}
+.hero-tagline{font-family:var(--font-corm);font-size:clamp(17px,4.5vw,24px);font-style:italic;color:var(--gold3);margin-bottom:8px;line-height:1.5}
+.hero-slogan{font-family:var(--font-cinzel);font-size:clamp(10px,2.5vw,13px);letter-spacing:4px;text-transform:uppercase;color:rgba(201,168,76,.6);margin-bottom:32px}
+.hero-datebox{display:inline-flex;flex-direction:column;align-items:center;gap:6px;border:1px solid rgba(201,168,76,.35);padding:18px 40px;position:relative;margin-bottom:36px}
+.hero-datebox::before,.hero-datebox::after{content:'◆';position:absolute;color:var(--gold);font-size:10px;left:50%;transform:translateX(-50%)}
+.hero-datebox::before{top:-6px}.hero-datebox::after{bottom:-6px}
+.hero-date{font-family:var(--font-head);font-size:clamp(18px,4vw,24px);font-weight:700;color:var(--white)}
+.hero-time{font-family:var(--font-cinzel);font-size:12px;color:var(--gold);letter-spacing:2px}
+.hero-place{font-family:var(--font-body);font-size:13px;color:rgba(245,236,215,.55);font-style:italic}
+.hero-cta{font-family:var(--font-cinzel);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#000;background:linear-gradient(135deg,var(--gold-dk),var(--gold),var(--gold2));padding:15px 40px;border-radius:2px;box-shadow:0 4px 24px rgba(201,168,76,.3);transition:all .3s ease; text-decoration:none; display:inline-block;}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(201,168,76,.5)}
+
+/* SCROLL CUE */
+.scroll-cue{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:36px;opacity:.5}
+.scroll-cue-text{font-family:var(--font-cinzel);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.scroll-cue-arrow{width:20px;height:32px;border:1px solid rgba(201,168,76,.4);border-radius:10px;position:relative}
+.scroll-cue-arrow::after{content:'';position:absolute;width:4px;height:4px;background:var(--gold);border-radius:50%;top:5px;left:50%;transform:translateX(-50%);animation:scrollBall 1.8s ease-in-out infinite}
+@keyframes scrollBall{0%{top:5px;opacity:1}100%{top:20px;opacity:0}}
+
+/* ══════════════════════════════════════
+   MARQUEE STRIP
+══════════════════════════════════════ */
+.marquee-strip{padding:14px 0;overflow:hidden;white-space:nowrap;background:linear-gradient(90deg,transparent,rgba(201,168,76,.05) 20%,rgba(201,168,76,.05) 80%,transparent);border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12)}
+.marquee-inner{display:inline-flex;gap:48px;animation:marquee 30s linear infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{font-family:var(--font-cinzel);font-size:11px;letter-spacing:3px;color:rgba(201,168,76,.5);text-transform:uppercase}
+.mq-sep{color:var(--gold);opacity:.3;font-size:18px}
+
+/* ══════════════════════════════════════
+   PEMBUKA SECTION
+══════════════════════════════════════ */
+#pembuka{padding:90px 0;background:linear-gradient(180deg,var(--black) 0%,var(--black2) 100%)}
+.pembuka-card{
+  background:linear-gradient(145deg,var(--cream2) 0%,#EEE4CC 60%,#E6D6B0 100%);
+  color:var(--brown);padding:52px 40px;
+  border-radius:3px;position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px rgba(201,168,76,.2);
+  max-width:600px;margin:32px auto 0;
+}
+.pembuka-card::before{content:'';position:absolute;inset:12px;border:1px solid rgba(139,105,20,.25);pointer-events:none;border-radius:2px}
+.crn{position:absolute;font-size:24px;color:var(--gold-dk);line-height:1}
+.crn-tl{top:4px;left:6px}.crn-tr{top:4px;right:6px;transform:scaleX(-1)}.crn-bl{bottom:4px;left:6px;transform:scaleY(-1)}.crn-br{bottom:4px;right:6px;transform:scale(-1)}
+.pembuka-greeting{font-family:var(--font-cinzel);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-dk);text-align:center;margin-bottom:20px}
+.pembuka-body{font-family:var(--font-corm);font-size:clamp(16px,4vw,19px);line-height:2;color:#3d2b1f;text-align:center}
+.pembuka-body p{margin-bottom:18px}
+.pembuka-body p:last-child{margin-bottom:0}
+.pembuka-highlight{font-weight:600;color:#5a3412;font-style:italic}
+
+/* ══════════════════════════════════════
+   DETAIL ACARA
+══════════════════════════════════════ */
+#detail{padding:90px 0;background:var(--black)}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+@media(max-width:480px){.detail-grid{grid-template-columns:1fr}}
+.detail-card{background:var(--black3);border:1px solid rgba(201,168,76,.15);border-top:2px solid var(--gold);padding:24px 20px;border-radius:2px;transition:border-color .3s,transform .3s; text-align:center;}
+.detail-card:hover{border-color:rgba(201,168,76,.4);transform:translateY(-3px)}
+.detail-icon{font-size:28px;margin-bottom:14px; color:var(--gold);}
+.detail-label{font-family:var(--font-cinzel);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.detail-val{font-family:var(--font-head);font-size:clamp(16px,4vw,20px);color:var(--white);font-weight:700;line-height:1.3;margin-bottom:4px}
+.detail-sub{font-family:var(--font-body);font-size:13px;color:rgba(245,236,215,.45);font-style:italic}
+
+/* ══════════════════════════════════════
+   DRESSCODE
+══════════════════════════════════════ */
+#dresscode{padding:90px 0;background:linear-gradient(180deg,var(--black) 0%,var(--black2) 100%)}
+.dc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+@media(max-width:480px){.dc-grid{grid-template-columns:1fr}}
+.dc-card{background:var(--black3);border:1px solid rgba(201,168,76,.2);padding:36px 24px;text-align:center;border-radius:3px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.dc-card:hover{border-color:rgba(201,168,76,.5);transform:translateY(-4px)}
+.dc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.dc-card::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 14px,rgba(201,168,76,.015) 14px,rgba(201,168,76,.015) 15px);pointer-events:none}
+.dc-icon{font-size:52px;margin-bottom:16px;display:block; color:var(--gold);}
+.dc-title{font-family:var(--font-cinzel);font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.dc-desc{font-family:var(--font-body);font-size:clamp(13px,3.5vw,15px);color:rgba(245,236,215,.7);line-height:1.8}
+
+/* ══════════════════════════════════════
+   TIMELINE
+══════════════════════════════════════ */
+#rundown{padding:90px 0;background:var(--black)}
+.timeline{max-width:600px;margin:44px auto 0;padding-left:28px;position:relative}
+.timeline::before{content:'';position:absolute;left:6px;top:10px;bottom:10px;width:1px;background:linear-gradient(180deg,transparent,var(--gold-dk) 10%,var(--gold) 50%,var(--gold-dk) 90%,transparent)}
+.tl-item{position:relative;margin-bottom:24px;padding-left:28px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-28px;top:9px;width:13px;height:13px;display:flex;align-items:center;justify-content:center}
+.tl-dot::before{content:'';position:absolute;width:13px;height:13px;border-radius:50%;background:var(--black);border:1.5px solid var(--gold)}
+.tl-inner-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);position:relative;z-index:1;box-shadow:0 0 8px rgba(201,168,76,.6)}
+.tl-card{background:var(--black3);border:1px solid rgba(201,168,76,.1);border-left:2px solid var(--gold-dk);padding:14px 18px;border-radius:0 3px 3px 0;transition:border-color .3s,transform .2s}
+.tl-card:hover{border-left-color:var(--gold2);border-color:rgba(201,168,76,.3);transform:translateX(4px)}
+.tl-time{display:block;font-family:var(--font-cinzel);font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:4px}
+.tl-name{display:block;font-family:var(--font-head);font-size:clamp(14px,3.5vw,17px);color:var(--white);font-weight:600;line-height:1.35}
+.tl-desc{font-family:var(--font-body);font-size:12.5px;color:rgba(245,236,215,.45);font-style:italic;margin-top:3px}
+
+/* ══════════════════════════════════════
+   GALLERY CAROUSEL
+══════════════════════════════════════ */
+#gallery{padding:90px 0;background:linear-gradient(180deg,var(--black2) 0%,var(--black) 100%);overflow:hidden}
+.gallery-subtitle{font-family:var(--font-corm);font-size:clamp(16px,4vw,20px);font-style:italic;color:rgba(245,236,215,.5);text-align:center;margin-top:6px}
+.carousel-wrap{position:relative;max-width:680px;margin:36px auto 0}
+.carousel{position:relative;overflow:hidden;border-radius:6px;border:1px solid rgba(201,168,76,.25);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.slide{display:none;position:relative}
+.slide.active{display:block; animation: fadeEffect 1s;}
+@keyframes fadeEffect { from {opacity: 0;} to {opacity: 1;} }
+.slide img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+.slide-cap{position:absolute;bottom:0;left:0;right:0;padding:36px 24px 20px;background:linear-gradient(0deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.4) 60%,transparent 100%)}
+.slide-cap p{font-family:var(--font-corm);font-size:clamp(14px,3.5vw,18px);font-style:italic;color:rgba(245,236,215,.85)}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:44px;height:44px;background:rgba(0,0,0,.6);border:1px solid rgba(201,168,76,.35);color:var(--gold);font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(4px)}
+.carousel-btn:hover{background:rgba(201,168,76,.15);border-color:var(--gold)}
+#slidePrev{left:12px;border-radius:50%}
+#slideNext{right:12px;border-radius:50%}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.dot{width:8px;height:8px;border-radius:4px;background:rgba(201,168,76,.25);border:none;transition:all .35s ease;padding:0;cursor:pointer;}
+.dot.on{background:var(--gold);width:24px}
+
+/* ══════════════════════════════════════
+   QUOTE SECTION
+══════════════════════════════════════ */
+#quote{
+  padding:100px 20px;
+  background:linear-gradient(135deg,#080810 0%,#0f0f1e 50%,#080810 100%);
+  position:relative;overflow:hidden;text-align:center;
+}
+.quote-gunungan-l{position:absolute;left:-40px;top:50%;transform:translateY(-50%);opacity:.05}
+.quote-gunungan-r{position:absolute;right:-40px;top:50%;transform:translateY(-50%) scaleX(-1);opacity:.05}
+.quote-inner{position:relative;z-index:1;max-width:580px;margin:0 auto}
+.quote-mark{font-family:var(--font-head);font-size:80px;color:var(--gold);opacity:.25;line-height:.5;margin-bottom:12px;display:block}
+.quote-text{font-family:var(--font-corm);font-size:clamp(20px,5.5vw,34px);font-style:italic;color:var(--cream);line-height:1.6;margin-bottom:32px}
+.quote-tagline{font-family:var(--font-cinzel);font-size:clamp(11px,2.5vw,14px);letter-spacing:4px;text-transform:uppercase;color:var(--gold2);margin-bottom:12px}
+.quote-slogan{font-family:var(--font-cinzel);font-size:clamp(10px,2.5vw,12px);letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,.5)}
+
+/* ══════════════════════════════════════
+   LOKASI SECTION
+══════════════════════════════════════ */
+#lokasi{padding:90px 0;background:var(--black)}
+.lokasi-card{max-width:480px;margin:36px auto 0;background:var(--black3);border:1px solid rgba(201,168,76,.2);border-top:2px solid var(--gold);padding:40px 32px;text-align:center;border-radius:3px}
+.lokasi-icon{font-size:48px;margin-bottom:18px;display:block; color:var(--gold);}
+.lokasi-name{font-family:var(--font-head);font-size:clamp(18px,5vw,26px);font-weight:700;color:var(--white);margin-bottom:6px}
+.lokasi-sub{font-family:var(--font-body);font-size:14px;color:rgba(245,236,215,.45);font-style:italic;margin-bottom:28px}
+.lokasi-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-cinzel);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#000;background:linear-gradient(135deg,var(--gold-dk),var(--gold));padding:13px 32px;border-radius:3px;text-decoration:none;transition:all 0.3s;}
+.lokasi-btn:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(201,168,76,0.5);}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-top:1px solid rgba(201,168,76,.15)}
+.ft-logo{width:90px;height:90px;margin:0 auto 20px;opacity:0.9;object-fit:contain;filter:drop-shadow(0 0 10px rgba(201,168,76,.3));}
+.ft-title{font-family:var(--font-cinzel);font-size:14px;letter-spacing:4px;color:var(--gold);margin-bottom:8px}
+.ft-copy{font-family:var(--font-body);font-size:12px;color:rgba(245,236,215,.4);margin-top:20px}
+</style>
 </head>
 <body>
-    <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
+  <!-- LOADING SCREEN -->
+  <div id="loading">
+    <img src="logo.png" alt="Logo" class="ld-logo">
+    <div class="ld-subtitle">Pelepasan Siswa</div>
+    <div class="ld-title">Kelas IX<br>SMPN 1 Pringapus</div>
+    <div class="ld-divider"></div>
+    <div class="ld-shimmer">Angkatan 2025/2026</div>
+    <button class="open-btn" onclick="openInvitation()">Buka Undangan</button>
+  </div>
 
-        // --- COMPONENTS ---
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <div class="hero-inner fi">
+      <img src="logo.png" alt="Logo SMP" class="hero-logo">
+      <div class="hero-pre">Undangan Resmi</div>
+      <h1 class="hero-title">Pelepasan <span class="accent">Siswa Kelas IX</span></h1>
+      <div class="hero-school">SMP NEGERI 1 PRINGAPUS</div>
+      <div class="hero-year">Tahun Ajaran 2025 / 2026</div>
+      <div class="hero-tagline">"Melangkah Maju, Menggapai Cita-cita"</div>
+      <div class="hero-slogan">Generasi Emas Penuh Prestasi</div>
+      
+      <div class="hero-datebox">
+        <div class="hero-date">Kamis, 15 Juni 2026</div>
+        <div class="hero-time">08.00 WIB - Selesai</div>
+        <div class="hero-place">Gedung Serbaguna SMPN 1 Pringapus</div>
+      </div>
+      <br>
+      <a href="#pembuka" class="hero-cta">Lanjut Ke Undangan</a>
+      
+      <div class="scroll-cue">
+        <div class="scroll-cue-text">Scroll</div>
+        <div class="scroll-cue-arrow"></div>
+      </div>
+    </div>
+  </section>
 
-        const GununganSVG = ({ className }) => (
-            <svg viewBox="0 0 100 150" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 5L10 140H90L50 5Z" stroke="currentColor" strokeWidth="1" />
-                <path d="M50 20L20 130H80L50 20Z" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
-                <circle cx="50" cy="80" r="10" stroke="currentColor" strokeWidth="1" />
-                <path d="M40 80H60M50 70V90" stroke="currentColor" strokeWidth="1" />
-                <path d="M30 140C30 120 40 110 50 110C60 110 70 120 70 140" stroke="currentColor" strokeWidth="1" />
-            </svg>
-        );
+  <!-- MARQUEE STRIP -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span class="mq-item">Pelepasan Kelas IX</span>
+      <span class="mq-sep">✦</span>
+      <span class="mq-item">SMPN 1 Pringapus</span>
+      <span class="mq-sep">✦</span>
+      <span class="mq-item">Angkatan 2026</span>
+      <span class="mq-sep">✦</span>
+      <span class="mq-item">Mewujudkan Generasi Gemilang</span>
+      <span class="mq-sep">✦</span>
+      <span class="mq-item">Pelepasan Kelas IX</span>
+      <span class="mq-sep">✦</span>
+      <span class="mq-item">SMPN 1 Pringapus</span>
+      <span class="mq-sep">✦</span>
+      <span class="mq-item">Angkatan 2026</span>
+      <span class="mq-sep">✦</span>
+      <span class="mq-item">Mewujudkan Generasi Gemilang</span>
+      <span class="mq-sep">✦</span>
+    </div>
+  </div>
 
-        const LoadingScreen = () => (
-            <div id="loading-screen" className="fixed inset-0 z-[100] bg-dark flex flex-col items-center justify-center text-center p-6">
-                <div className="loading-content opacity-0">
-                    <GununganSVG className="w-16 h-16 text-gold mb-6 mx-auto" />
-                    <h1 className="font-heading text-2xl text-gold tracking-widest uppercase">
-                        SMP Negeri 1 Pringapus
-                    </h1>
-                </div>
+  <!-- PEMBUKA SECTION -->
+  <section id="pembuka">
+    <div class="container">
+      <div class="section-label fi">Mukadimah</div>
+      <h2 class="section-title fi">Salam <em>Sejahtera</em></h2>
+      <div class="ornament-div fi">
+        <div class="line"></div>
+        <div class="dot-m"></div>
+        <div class="line"></div>
+      </div>
+      
+      <div class="pembuka-card fi">
+        <div class="crn crn-tl">✥</div>
+        <div class="crn crn-tr">✥</div>
+        <div class="crn crn-bl">✥</div>
+        <div class="crn crn-br">✥</div>
+        <div class="pembuka-greeting">Assalamu'alaikum Wr. Wb.</div>
+        <div class="pembuka-body">
+          <p>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara <span class="pembuka-highlight">Pelepasan Siswa-Siswi Kelas IX SMP Negeri 1 Pringapus</span> Tahun Ajaran 2025/2026.</p>
+          <p>Kehadiran dan doa restu Bapak/Ibu merupakan kehormatan dan kebahagiaan tersendiri bagi kami serta menjadi motivasi bagi putra-putri kami untuk melangkah ke jenjang pendidikan selanjutnya.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL ACARA -->
+  <section id="detail">
+    <div class="container">
+      <div class="section-label fi">Informasi Waktu</div>
+      <h2 class="section-title fi">Detail <em>Acara</em></h2>
+      <div class="ornament-div fi">
+        <div class="line"></div>
+        <div class="dot-m"></div>
+        <div class="line"></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card fi-l">
+          <i class="fa-regular fa-calendar-check detail-icon"></i>
+          <div class="detail-label">Hari & Tanggal</div>
+          <div class="detail-val">Kamis, 15 Juni 2026</div>
+          <div class="detail-sub">Sesuai Kalender Akademik</div>
+        </div>
+        <div class="detail-card fi-r">
+          <i class="fa-regular fa-clock detail-icon"></i>
+          <div class="detail-label">Waktu Pelaksanaan</div>
+          <div class="detail-val">08:00 WIB - Selesai</div>
+          <div class="detail-sub">Diharapkan hadir tepat waktu</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRESSCODE -->
+  <section id="dresscode">
+    <div class="container">
+      <div class="section-label fi">Panduan Pakaian</div>
+      <h2 class="section-title fi">Aturan <em>Berbusana</em></h2>
+      <div class="ornament-div fi">
+        <div class="line"></div>
+        <div class="dot-m"></div>
+        <div class="line"></div>
+      </div>
+
+      <div class="dc-grid">
+        <div class="dc-card fi-l">
+          <i class="fa-solid fa-user-tie dc-icon"></i>
+          <div class="dc-title">Tamu Undangan (Pria)</div>
+          <div class="dc-desc">Mengenakan Batik Rapi / Pakaian Sipil Lengkap (PSL) atau menyesuaikan dengan norma kesopanan sekolah.</div>
+        </div>
+        <div class="dc-card fi-r">
+          <i class="fa-solid fa-person-dress dc-icon"></i>
+          <div class="dc-title">Tamu Undangan (Wanita)</div>
+          <div class="dc-desc">Mengenakan Kebaya / Pakaian Nasional / Busana Muslimah yang sopan dan anggun.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE / RUNDOWN -->
+  <section id="rundown">
+    <div class="container">
+      <div class="section-label fi">Susunan Acara</div>
+      <h2 class="section-title fi">Agenda <em>Pelepasan</em></h2>
+      <div class="ornament-div fi">
+        <div class="line"></div>
+        <div class="dot-m"></div>
+        <div class="line"></div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">08.00 - 08.30 WIB</span>
+            <span class="tl-name">Registrasi & Pembukaan</span>
+            <div class="tl-desc">Kehadiran tamu undangan dan persembahan tari penyambutan.</div>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">08.30 - 09.30 WIB</span>
+            <span class="tl-name">Sambutan - Sambutan</span>
+            <div class="tl-desc">Sambutan dari Kepala Sekolah, Komite Sekolah, dan perwakilan Dinas.</div>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">09.30 - 11.00 WIB</span>
+            <span class="tl-name">Prosesi Pelepasan & Pengalungan Samir</span>
+            <div class="tl-desc">Acara inti pelepasan atribut sekolah dan pengalungan tanda kelulusan.</div>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">11.00 - 12.00 WIB</span>
+            <span class="tl-name">Hiburan & Ramah Tamah</span>
+            <div class="tl-desc">Penampilan seni dari siswa-siswi dan sesi dokumentasi/foto bersama.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY CAROUSEL -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-label fi">Dokumentasi</div>
+      <h2 class="section-title fi">Galeri <em>Kenangan</em></h2>
+      <div class="gallery-subtitle fi">"Momen-momen indah yang takkan terlupakan"</div>
+      <div class="ornament-div fi">
+        <div class="line"></div>
+        <div class="dot-m"></div>
+        <div class="line"></div>
+      </div>
+
+      <div class="carousel-wrap fi">
+        <div class="carousel">
+          <button class="carousel-btn" id="slidePrev"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="carousel-btn" id="slideNext"><i class="fa-solid fa-chevron-right"></i></button>
+
+          <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop" alt="Kegiatan Sekolah">
+            <div class="slide-cap">
+              <p>Momen kebersamaan kelulusan angkatan ini.</p>
             </div>
-        );
-
-        const MusicButton = ({ isPlaying, toggleMusic }) => (
-            <div className="fixed bottom-8 right-8 z-[60]">
-                <button
-                    onClick={toggleMusic}
-                    className="bg-gold p-4 rounded-full shadow-xl flex items-center justify-center transition-all hover:scale-105 active:scale-95 text-dark"
-                >
-                    <i data-lucide={isPlaying ? "volume-2" : "volume-x"} className="w-5 h-5"></i>
-                </button>
+          </div>
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1571260899304-425070114f55?q=80&w=800&auto=format&fit=crop" alt="Foto Siswa">
+            <div class="slide-cap">
+              <p>Mengukir prestasi dan semangat belajar.</p>
             </div>
-        );
+          </div>
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&auto=format&fit=crop" alt="Gedung Sekolah">
+            <div class="slide-cap">
+              <p>Lingkungan belajar di SMPN 1 Pringapus.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-dots">
+          <button class="dot on" onclick="currentSlide(0)"></button>
+          <button class="dot" onclick="currentSlide(1)"></button>
+          <button class="dot" onclick="currentSlide(2)"></button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        const HeroSection = ({ onOpen }) => (
-            <section className="relative min-h-screen flex flex-col md:flex-row gunungan-tile">
-                <div className="w-full md:w-1/2 flex items-center p-8 md:p-20 z-10 hero-text bg-dark/80 backdrop-blur-sm">
-                    <div>
-                        <div className="w-20 h-20 mb-12 opacity-0 -translate-y-4 logo-anim">
-                            <img src="logo pringaus.jpg.jpeg" alt="Logo" className="w-full h-full object-contain" onError={e => e.target.style.display='none'} />
-                        </div>
-                        <div className="accent-line opacity-0 scale-x-0 line-anim origin-left"></div>
-                        <h2 className="text-gold tracking-[0.3em] text-sm mb-4 uppercase font-semibold opacity-0 -translate-y-4 text-anim">Tahun Ajaran 2025/2026</h2>
-                        <h1 className="font-heading text-5xl md:text-7xl text-cream leading-tight uppercase font-bold mb-8 opacity-0 -translate-y-4 text-anim">
-                            Pelepasan <br/>Murid <br/>Kelas IX
-                        </h1>
-                        <p className="text-cream/60 text-lg mb-12 font-light max-w-md opacity-0 -translate-y-4 text-anim">
-                            Berakar pada Budaya, Bertumbuh Menuju Dunia.
-                        </p>
-                        <button 
-                            onClick={onOpen} 
-                            className="bg-gold text-dark px-10 py-4 rounded-none font-bold tracking-widest transition-all hover:bg-cream flex items-center gap-4 opacity-0 text-anim group"
-                        >
-                            BUKA UNDANGAN
-                            <i data-lucide="arrow-right" className="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
-                        </button>
-                    </div>
-                </div>
+  <!-- QUOTE SECTION -->
+  <section id="quote">
+    <div class="quote-inner fi">
+      <span class="quote-mark">“</span>
+      <div class="quote-text">
+        Pendidikan adalah tiket ke masa depan. Hari esok dimiliki oleh orang-orang yang mempersiapkan dirinya sejak hari ini.
+      </div>
+      <div class="quote-tagline">Malcom X</div>
+      <div class="quote-slogan">Teruslah Belajar dan Berkarya</div>
+    </div>
+  </section>
 
-                <div className="w-full md:w-1/2 h-[50vh] md:h-screen relative overflow-hidden hero-image opacity-0">
-                    <img src="DVS00277.jpg" alt="Hero" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/30"></div>
-                </div>
-            </section>
-        );
+  <!-- LOKASI SECTION -->
+  <section id="lokasi">
+    <div class="container">
+      <div class="section-label fi">Peta Lokasi</div>
+      <h2 class="section-title fi">Tempat <em>Pelaksanaan</em></h2>
+      <div class="ornament-div fi">
+        <div class="line"></div>
+        <div class="dot-m"></div>
+        <div class="line"></div>
+      </div>
 
-        const InvitationText = () => (
-            <section className="gunungan-tile pb-24 section-anim relative">
-                <div className="w-full h-[60vh] overflow-hidden relative">
-                    <img src="DVS00266.jpg" alt="Background" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-dark/60"></div>
-                </div>
-                
-                <div className="container mx-auto px-6 max-w-4xl relative">
-                    <div className="overlap-box text-center">
-                        <GununganSVG className="w-12 h-12 text-gold mx-auto mb-8" />
-                        <h2 className="font-heading text-3xl text-gold mb-8 uppercase tracking-widest">Salam Hangat</h2>
-                        <p className="text-cream/80 leading-relaxed text-lg mb-6 font-light">
-                            Dengan penuh rasa syukur dan bangga, kami mengundang murid kelas IX beserta orang tua/wali murid untuk hadir dalam acara Pelepasan Murid Kelas IX SMP Negeri 1 Pringapus Tahun Ajaran 2025/2026.
-                        </p>
-                        <p className="text-cream/80 leading-relaxed text-lg mb-8 font-light">
-                            Acara ini menjadi momen istimewa untuk mengenang perjalanan, merayakan pencapaian, dan mengantar langkah baru para murid menuju masa depan yang lebih luas.
-                        </p>
-                    </div>
-                </div>
-            </section>
-        );
+      <div class="lokasi-card fi">
+        <i class="fa-solid fa-map-location-dot lokasi-icon"></i>
+        <div class="lokasi-name">SMPN 1 Pringapus</div>
+        <div class="lokasi-sub">Jl. Raya Pringapus - Klepu Km. 03, Kab. Semarang, Jawa Tengah</div>
+        <a href="https://maps.app.goo.gl/xxx" target="_blank" class="lokasi-btn">
+          <i class="fa-solid fa-location-arrow"></i> Buka di Google Maps
+        </a>
+      </div>
+    </div>
+  </section>
 
-        const EventDetails = () => (
-            <section className="py-24 bg-dark section-anim">
-                <div className="container mx-auto px-6 max-w-6xl">
-                    <div className="accent-line mx-auto"></div>
-                    <h2 className="font-heading text-3xl md:text-4xl text-gold mb-16 text-center uppercase tracking-widest">Informasi Acara</h2>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-gold/20">
-                        {[
-                            { icon: 'calendar', label: "Tanggal", value: "Sabtu, 23 Mei 2026" },
-                            { icon: 'clock', label: "Waktu", value: "07.00 WIB s.d. selesai" },
-                            { icon: 'map-pin', label: "Tempat", value: "Lapangan SMP N 1 Pringapus" },
-                            { icon: 'award', label: "Acara", value: "Pelepasan Murid Kelas IX" },
-                        ].map((item, i) => (
-                            <div key={i} className="p-12 border-b border-r border-gold/20 hover:bg-white/5 transition-colors flex items-start gap-6">
-                                <div className="text-gold mt-1"><i data-lucide={item.icon} className="w-8 h-8"></i></div>
-                                <div>
-                                    <h3 className="text-gold/50 text-sm uppercase tracking-widest mb-2 font-semibold">{item.label}</h3>
-                                    <p className="text-cream font-heading text-2xl">{item.value}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        );
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <img src="logo.png" alt="Logo" class="ft-logo">
+      <div class="ft-title">SMP NEGERI 1 PRINGAPUS</div>
+      <div class="ft-copy">
+        &copy; 2026 Undangan Pelepasan Kelas IX.<br>
+        Dibuat dengan ❤️ untuk generasi gemilang.
+      </div>
+    </div>
+  </footer>
 
-        const DresscodeSection = () => (
-            <section className="py-24 gunungan-tile section-anim">
-                <div className="container mx-auto px-6 max-w-5xl">
-                    <div className="accent-line"></div>
-                    <h2 className="font-heading text-3xl md:text-4xl text-gold mb-12 uppercase tracking-widest">Ketentuan Busana</h2>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="bg-dark/80 backdrop-blur-md p-10 hover-lift border border-gold/20 border-t-4 border-t-gold">
-                            <h3 className="font-heading text-2xl text-cream mb-4">Tamu Putra</h3>
-                            <p className="text-cream/70 font-light leading-relaxed">Kemeja putih, dasi, jas hitam, celana hitam, dan bersepatu formal.</p>
-                        </div>
-                        <div className="bg-dark/80 backdrop-blur-md p-10 hover-lift border border-gold/20 border-t-4 border-t-gold">
-                            <h3 className="font-heading text-2xl text-cream mb-4">Tamu Putri</h3>
-                            <p className="text-cream/70 font-light leading-relaxed">Kebaya tradisional atau pakaian formal nasional yang rapi dan sopan.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        );
+  <!-- SCRIPT -->
+  <script>
+    // FUNGSI BUKA UNDANGAN DARI LOADING SCREEN
+    function openInvitation() {
+      const loadingScreen = document.getElementById('loading');
+      loadingScreen.classList.add('hidden');
+      document.body.style.overflowY = 'auto'; // izinkan scroll
+      // play background music if any
+    }
 
-        const RundownSection = () => (
-            <section className="py-24 bg-dark section-anim">
-                <div className="container mx-auto px-6 max-w-4xl">
-                    <div className="accent-line mx-auto"></div>
-                    <h2 className="font-heading text-3xl md:text-4xl text-gold mb-16 text-center uppercase tracking-widest">Susunan Acara</h2>
-                    
-                    <div className="space-y-6">
-                        {[
-                            "Pembukaan", "Menyanyikan Lagu Indonesia Raya", "Sambutan Kepala Sekolah", "Sambutan Perwakilan Orang Tua/Wali Murid", "Prosesi Pelepasan Murid Kelas IX", "Penampilan Seni dan Budaya", "Pengumuman / Apresiasi Murid", "Doa Bersama", "Penutup", "Sesi Foto Bersama"
-                        ].map((text, i) => (
-                            <div key={i} className="flex items-center gap-6 p-6 border border-gold/20 hover:border-gold hover:shadow-lg transition-all bg-dark rounded-sm">
-                                <span className="text-gold font-heading text-2xl w-12 text-center opacity-50">{String(i+1).padStart(2, '0')}</span>
-                                <div className="w-[1px] h-10 bg-gold/20"></div>
-                                <h4 className="text-cream text-lg font-light">{text}</h4>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        );
+    // AWALAN: Kunci scroll saat loading muncul
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.style.overflowY = 'hidden';
+      
+      // INTERSECTION OBSERVER UNTUK ANIMASI FADE-IN
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      };
 
-        const GalleryCarousel = () => {
-            const [index, setIndex] = useState(0);
-            const images = ["DVS00232.jpg", "DVS00234.jpg", "DVS00236.jpg", "DVS00257.jpg", "DVS00266.jpg", "DVS00277.jpg", "DVS00290.jpg"];
-            
-            useEffect(() => {
-                const interval = setInterval(() => setIndex(prev => (prev + 1) % images.length), 4000);
-                return () => clearInterval(interval);
-            }, []);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
 
-            return (
-                <section className="py-24 gunungan-tile text-white section-anim">
-                    <div className="container mx-auto px-6 max-w-6xl">
-                        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                            <div>
-                                <div className="accent-line bg-gold"></div>
-                                <h2 className="font-heading text-3xl md:text-4xl text-gold uppercase tracking-widest">Galeri Kenangan</h2>
-                            </div>
-                            <p className="text-cream/60 font-light max-w-md">Setiap foto menyimpan cerita, tawa, perjuangan, dan kebanggaan.</p>
-                        </div>
-                        
-                        <div className="relative aspect-video overflow-hidden border border-gold/20">
-                            <img src={images[index]} className="w-full h-full object-cover" onError={e => e.target.style.display='none'} />
-                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
-                                {images.map((_, i) => (
-                                    <div key={i} className={`h-1 transition-all duration-300 ${i === index ? 'w-8 bg-gold' : 'w-4 bg-white/30'}`}></div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
+      document.querySelectorAll('.fi, .fi-l, .fi-r').forEach(el => {
+        observer.observe(el);
+      });
+    });
 
-        const MainApp = () => {
-            const [loading, setLoading] = useState(true);
-            const [isOpen, setIsOpen] = useState(false);
-            const [isPlaying, setIsPlaying] = useState(false);
-            const audioRef = useRef(null);
+    // CAROUSEL GALLERY LOGIC
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
 
-            useEffect(() => {
-                gsap.registerPlugin(ScrollTrigger);
-                audioRef.current = new Audio("Sampai Jumpa - Endank Soekamti ( Emotional Piano Cover ).mp3");
-                audioRef.current.loop = true;
-                
-                // Loading Animation
-                const tl = gsap.timeline();
-                tl.to(".loading-content", { opacity: 1, duration: 1 })
-                  .to(".loading-content", { opacity: 0, duration: 0.8, delay: 1, onComplete: () => setLoading(false) });
-            }, []);
+    function showSlides(n) {
+      if (n >= slides.length) slideIndex = 0;
+      if (n < 0) slideIndex = slides.length - 1;
+      
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('on'));
+      
+      slides[slideIndex].classList.add('active');
+      dots[slideIndex].classList.add('on');
+    }
 
-            useEffect(() => {
-                if (!loading && !isOpen) {
-                    const tl = gsap.timeline();
-                    tl.to(".hero-image", { opacity: 1, duration: 1.5, ease: "power2.inOut" })
-                      .to(".logo-anim", { opacity: 1, y: 0, duration: 0.8 }, "-=1")
-                      .to(".line-anim", { opacity: 1, scaleX: 1, duration: 0.8 }, "-=0.6")
-                      .to(".text-anim", { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }, "-=0.6");
-                }
-            }, [loading, isOpen]);
+    function nextSlide() {
+      slideIndex++;
+      showSlides(slideIndex);
+    }
 
-            useEffect(() => {
-                if (isOpen) {
-                    lucide.createIcons();
-                    gsap.utils.toArray(".section-anim").forEach(section => {
-                        gsap.fromTo(section, 
-                            { opacity: 0, y: 30 },
-                            { opacity: 1, y: 0, duration: 1, ease: "power2.out", scrollTrigger: { trigger: section, start: "top 85%" } }
-                        );
-                    });
-                }
-            }, [isOpen]);
+    function prevSlide() {
+      slideIndex--;
+      showSlides(slideIndex);
+    }
 
-            const toggleMusic = () => {
-                if (isPlaying) {
-                    audioRef.current.pause();
-                } else {
-                    audioRef.current.play().catch(e => console.log(e));
-                }
-                setIsPlaying(!isPlaying);
-            };
+    function currentSlide(n) {
+      slideIndex = n;
+      showSlides(slideIndex);
+    }
 
-            const handleOpen = () => {
-                setIsOpen(true);
-                audioRef.current.play().then(() => setIsPlaying(true)).catch(e => console.log(e));
-                window.scrollTo(0, 0);
-            };
+    document.getElementById('slideNext').addEventListener('click', nextSlide);
+    document.getElementById('slidePrev').addEventListener('click', prevSlide);
 
-            return (
-                <div className="antialiased">
-                    {loading && <LoadingScreen />}
-                    {!loading && (
-                        <div>
-                            <MusicButton isPlaying={isPlaying} toggleMusic={toggleMusic} />
-                            {!isOpen ? (
-                                <HeroSection onOpen={handleOpen} />
-                            ) : (
-                                <div id="invitation-content">
-                                    <HeroSection onOpen={() => {}} />
-                                    <InvitationText />
-                                    <EventDetails />
-                                    <DresscodeSection />
-                                    <RundownSection />
-                                    <GalleryCarousel />
-                                    <footer className="py-16 bg-black text-center text-white/40 font-light text-sm tracking-widest uppercase border-t border-gold/10">
-                                        <div className="w-12 h-12 mx-auto mb-6 opacity-30"><GununganSVG /></div>
-                                        <p>SMP Negeri 1 Pringapus • Tahun Ajaran 2025/2026</p>
-                                    </footer>
-                                </div>
-                            )}
-                        </div>
-                    )}
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<MainApp />);
-    </script>
+    // Auto play carousel (Opsional)
+    setInterval(() => {
+      nextSlide();
+    }, 5000);
+  </script>
 </body>
 </html>

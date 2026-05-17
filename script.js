@@ -1,7 +1,7 @@
 // Configuration & State
 let config = {
     eventName: "PELEPASAN SISWA KELAS IX",
-    schoolName: "SMP NEGERI 1 BANYUBIRU",
+    schoolName: "SMP NEGERI 1 PRINGAPUS",
     eventDate: "2024-06-15T08:00:00",
     gallery: []
 };
@@ -29,11 +29,11 @@ function updateUI() {
     const heroSub = document.querySelector('.hero h3');
     if (heroTitle) heroTitle.innerText = config.schoolName;
     if (heroSub) heroSub.innerText = config.eventName;
-    
+
     // Update Logo
     const logo = document.getElementById('school-logo');
     if (logo && config.logo) logo.src = config.logo;
-    
+
     // Update Gallery
     const track = document.getElementById('slider-track');
     if (track && config.gallery.length > 0) {
@@ -48,11 +48,11 @@ function updateUI() {
 // Countdown Logic
 function startCountdown() {
     const target = new Date(config.eventDate).getTime();
-    
+
     const interval = setInterval(() => {
         const now = new Date().getTime();
         const diff = target - now;
-        
+
         const d_elem = document.getElementById('days');
         if (!d_elem) return;
 
@@ -60,12 +60,12 @@ function startCountdown() {
             clearInterval(interval);
             return;
         }
-        
+
         const d = Math.floor(diff / (1000 * 60 * 60 * 24));
         const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const s = Math.floor((diff % (1000 * 60)) / 1000);
-        
+
         d_elem.innerText = d.toString().padStart(2, '0');
         document.getElementById('hours').innerText = h.toString().padStart(2, '0');
         document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
@@ -119,7 +119,7 @@ window.saveAdminChanges = () => {
     config.schoolName = document.getElementById('edit-school').value;
     config.eventName = document.getElementById('edit-event').value;
     config.eventDate = document.getElementById('edit-date').value;
-    
+
     const logoFile = document.getElementById('edit-logo').files[0];
     if (logoFile) {
         const reader = new FileReader();
@@ -148,4 +148,8 @@ function handleRecipient() {
     }
 }
 
-// Gallery Logic placeholder removed (not used)
+// Gallery Logic (Basic Placeholder)
+let currentSlide = 0;
+function moveSlide(direction) {
+    // Implementation for gallery slider
+}
