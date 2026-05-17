@@ -77,9 +77,10 @@ body::after{
   transition:opacity .8s ease,visibility .8s ease;
 }
 #loading.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.ld-logo{width:120px;height:120px;
-  filter:drop-shadow(0 0 20px rgba(201,168,76,.4));
-  animation:logoPulse 2.5s ease-in-out infinite;object-fit:contain;}
+.logo-glow-ld { filter: drop-shadow(0 0 20px rgba(201,168,76,.5)); animation: logoPulse 2.5s ease-in-out infinite; display: inline-block; }
+.ld-logo{width:140px;height:140px;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  object-fit:cover; display: block;}
 @keyframes logoPulse{0%,100%{filter:drop-shadow(0 0 15px rgba(201,168,76,.3))}50%{filter:drop-shadow(0 0 30px rgba(201,168,76,.6))}}
 .ld-subtitle{font-family:var(--font-cinzel);font-size:clamp(10px,2.5vw,13px);letter-spacing:5px;color:var(--gold2);text-transform:uppercase;text-align:center}
 .ld-title{font-family:var(--font-head);font-size:clamp(20px,5vw,32px);font-weight:700;text-align:center;color:var(--white);line-height:1.2}
@@ -131,7 +132,10 @@ body::after{
 #hero::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--gold-dk) 20%,var(--gold2) 50%,var(--gold-dk) 80%,transparent)}
 #hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(201,168,76,.07) 0%,transparent 65%);pointer-events:none;z-index:0}
 .hero-inner{position:relative;z-index:2;text-align:center;max-width:560px;width:100%}
-.hero-logo{width:130px;height:130px;margin:0 auto 28px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(201,168,76,.5));animation:heroLogoPulse 4s ease-in-out infinite;}
+.logo-glow-hero { filter: drop-shadow(0 0 20px rgba(201,168,76,.6)); animation: heroLogoPulse 4s ease-in-out infinite; margin: 0 auto 28px; display: inline-block; }
+.hero-logo{width:150px;height:150px;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  object-fit:cover; display: block;}
 @keyframes heroLogoPulse{0%,100%{filter:drop-shadow(0 0 16px rgba(201,168,76,.4))}50%{filter:drop-shadow(0 0 32px rgba(201,168,76,.65))}}
 .hero-pre{font-family:var(--font-cinzel);font-size:clamp(9px,2vw,12px);letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
 .hero-title{font-family:var(--font-head);font-size:clamp(32px,9vw,64px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:8px}
@@ -281,16 +285,25 @@ body::after{
    FOOTER
 ══════════════════════════════════════ */
 footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-top:1px solid rgba(201,168,76,.15)}
-.ft-logo{width:90px;height:90px;margin:0 auto 20px;opacity:0.9;object-fit:contain;filter:drop-shadow(0 0 10px rgba(201,168,76,.3));}
+.logo-glow-ft { filter: drop-shadow(0 0 10px rgba(201,168,76,.3)); margin: 0 auto 20px; display: inline-block; }
+.ft-logo{width:110px;height:110px; opacity:0.9;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  object-fit:cover; display: block;}
 .ft-title{font-family:var(--font-cinzel);font-size:14px;letter-spacing:4px;color:var(--gold);margin-bottom:8px}
 .ft-copy{font-family:var(--font-body);font-size:12px;color:rgba(245,236,215,.4);margin-top:20px}
+
+/* MUSIC BUTTON */
+#music-btn{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dk),var(--gold));color:#000;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 16px rgba(201,168,76,.4);z-index:999;opacity:0;visibility:hidden;transition:all .5s;border:none;}
+#music-btn.show{opacity:1;visibility:visible}
+.spin{animation:spinMusic 4s linear infinite}
+@keyframes spinMusic{100%{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 
   <!-- LOADING SCREEN -->
   <div id="loading">
-    <img src="logo.png" alt="Logo" class="ld-logo">
+    <div class="logo-glow-ld"><img src="NEW.jpg" alt="Logo" class="ld-logo"></div>
     <div class="ld-subtitle">Pelepasan Siswa</div>
     <div class="ld-title">Kelas IX<br>SMPN 1 Pringapus</div>
     <div class="ld-divider"></div>
@@ -301,8 +314,7 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
   <!-- HERO SECTION -->
   <section id="hero">
     <div class="hero-inner fi">
-      <img src="logo.png" alt="Logo SMP" class="hero-logo">
-      <div class="hero-pre">Undangan Resmi</div>
+      <div class="logo-glow-hero"><img src="NEW.jpg" alt="Logo SMP" class="hero-logo"></div>
       <h1 class="hero-title">Pelepasan <span class="accent">Siswa Kelas IX</span></h1>
       <div class="hero-school">SMP NEGERI 1 PRINGAPUS</div>
       <div class="hero-year">Tahun Ajaran 2025 / 2026</div>
@@ -310,9 +322,9 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
       <div class="hero-slogan">Generasi Emas Penuh Prestasi</div>
       
       <div class="hero-datebox">
-        <div class="hero-date">Kamis, 15 Juni 2026</div>
-        <div class="hero-time">08.00 WIB - Selesai</div>
-        <div class="hero-place">Gedung Serbaguna SMPN 1 Pringapus</div>
+        <div class="hero-date">Sabtu, 23 Mei 2026</div>
+        <div class="hero-time">07.00 WIB - Selesai</div>
+        <div class="hero-place">Lapangan SMP Negeri 1 Pringapus</div>
       </div>
       <br>
       <a href="#pembuka" class="hero-cta">Lanjut Ke Undangan</a>
@@ -364,8 +376,10 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
         <div class="crn crn-br">✥</div>
         <div class="pembuka-greeting">Assalamu'alaikum Wr. Wb.</div>
         <div class="pembuka-body">
-          <p>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara <span class="pembuka-highlight">Pelepasan Siswa-Siswi Kelas IX SMP Negeri 1 Pringapus</span> Tahun Ajaran 2025/2026.</p>
-          <p>Kehadiran dan doa restu Bapak/Ibu merupakan kehormatan dan kebahagiaan tersendiri bagi kami serta menjadi motivasi bagi putra-putri kami untuk melangkah ke jenjang pendidikan selanjutnya.</p>
+          <p>Dengan penuh rasa syukur dan bangga, SMP Negeri 1 Pringapus akan menyelenggarakan acara <span class="pembuka-highlight">Pelepasan Murid Kelas IX Tahun Ajaran 2025/2026</span> sebagai bentuk penghormatan atas perjalanan, perjuangan, dan kenangan indah yang telah terukir selama menempuh pendidikan di sekolah tercinta ini.</p>
+          <p>Hari pelepasan bukan sekadar perpisahan, melainkan langkah awal menuju mimpi-mimpi yang lebih besar. Setiap tawa, cerita, kerja keras, dan kebersamaan yang pernah hadir di lorong-lorong sekolah akan menjadi bagian berharga dalam perjalanan hidup kalian di masa depan.</p>
+          <p>Melalui acara ini, kami berharap seluruh murid kelas IX dapat hadir untuk bersama-sama mengenang perjalanan yang telah dilalui, merayakan keberhasilan, serta mempererat tali persaudaraan sebelum melangkah menuju jenjang berikutnya.</p>
+          <p>Semoga setiap langkah yang akan ditempuh kelak senantiasa dipenuhi semangat, ilmu yang bermanfaat, serta kesuksesan yang membanggakan bagi keluarga, sekolah, dan masa depan kalian sendiri.</p>
         </div>
       </div>
     </div>
@@ -386,13 +400,12 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
         <div class="detail-card fi-l">
           <i class="fa-regular fa-calendar-check detail-icon"></i>
           <div class="detail-label">Hari & Tanggal</div>
-          <div class="detail-val">Kamis, 15 Juni 2026</div>
-          <div class="detail-sub">Sesuai Kalender Akademik</div>
+          <div class="detail-val">Sabtu, 23 Mei 2026</div>
         </div>
         <div class="detail-card fi-r">
           <i class="fa-regular fa-clock detail-icon"></i>
           <div class="detail-label">Waktu Pelaksanaan</div>
-          <div class="detail-val">08:00 WIB - Selesai</div>
+          <div class="detail-val">07:00 WIB - Selesai</div>
           <div class="detail-sub">Diharapkan hadir tepat waktu</div>
         </div>
       </div>
@@ -413,13 +426,13 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
       <div class="dc-grid">
         <div class="dc-card fi-l">
           <i class="fa-solid fa-user-tie dc-icon"></i>
-          <div class="dc-title">Tamu Undangan (Pria)</div>
-          <div class="dc-desc">Mengenakan Batik Rapi / Pakaian Sipil Lengkap (PSL) atau menyesuaikan dengan norma kesopanan sekolah.</div>
+          <div class="dc-title">Putra</div>
+          <div class="dc-desc">Mengenakan kemeja putih berdasi, jas, celana warna gelap, dan bersepatu.</div>
         </div>
         <div class="dc-card fi-r">
           <i class="fa-solid fa-person-dress dc-icon"></i>
-          <div class="dc-title">Tamu Undangan (Wanita)</div>
-          <div class="dc-desc">Mengenakan Kebaya / Pakaian Nasional / Busana Muslimah yang sopan dan anggun.</div>
+          <div class="dc-title">Putri</div>
+          <div class="dc-desc">Mengenakan kebaya yang sopan dan anggun.</div>
         </div>
       </div>
     </div>
@@ -440,33 +453,113 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
         <div class="tl-item fi">
           <div class="tl-dot"><div class="tl-inner-dot"></div></div>
           <div class="tl-card">
-            <span class="tl-time">08.00 - 08.30 WIB</span>
-            <span class="tl-name">Registrasi & Pembukaan</span>
-            <div class="tl-desc">Kehadiran tamu undangan dan persembahan tari penyambutan.</div>
+            <span class="tl-time">07.00 - 07.30 WIB</span>
+            <span class="tl-name">Registrasi dan Pra Acara</span>
           </div>
         </div>
         <div class="tl-item fi">
           <div class="tl-dot"><div class="tl-inner-dot"></div></div>
           <div class="tl-card">
-            <span class="tl-time">08.30 - 09.30 WIB</span>
-            <span class="tl-name">Sambutan - Sambutan</span>
-            <div class="tl-desc">Sambutan dari Kepala Sekolah, Komite Sekolah, dan perwakilan Dinas.</div>
+            <span class="tl-time">07.30 - 08.00 WIB</span>
+            <span class="tl-name">Kirab Murid Kelas IX</span>
           </div>
         </div>
         <div class="tl-item fi">
           <div class="tl-dot"><div class="tl-inner-dot"></div></div>
           <div class="tl-card">
-            <span class="tl-time">09.30 - 11.00 WIB</span>
-            <span class="tl-name">Prosesi Pelepasan & Pengalungan Samir</span>
-            <div class="tl-desc">Acara inti pelepasan atribut sekolah dan pengalungan tanda kelulusan.</div>
+            <span class="tl-time">08.00 - 08.10 WIB</span>
+            <span class="tl-name">Tari Gambyong</span>
           </div>
         </div>
         <div class="tl-item fi">
           <div class="tl-dot"><div class="tl-inner-dot"></div></div>
           <div class="tl-card">
-            <span class="tl-time">11.00 - 12.00 WIB</span>
-            <span class="tl-name">Hiburan & Ramah Tamah</span>
-            <div class="tl-desc">Penampilan seni dari siswa-siswi dan sesi dokumentasi/foto bersama.</div>
+            <span class="tl-time">08.10 - 08.20 WIB</span>
+            <span class="tl-name">Pembukaan</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">08.20 - 08.35 WIB</span>
+            <span class="tl-name">Menyanyikan Lagu Indonesia Raya dan Mars SMP Negeri 1 Pringapus</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">08.35 - 08.40 WIB</span>
+            <span class="tl-name">Sambutan-sambutan</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">08.40 - 08.55 WIB</span>
+            <span class="tl-name">Prosesi Pengalungan Samir Kelulusan</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">08.55 - 09.00 WIB</span>
+            <span class="tl-name">Persembahan Perwakilan Murid Kelas IX</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">09.00 - 09.10 WIB</span>
+            <span class="tl-name">Pengumuman Murid Terbaik Kelas IX</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">09.10 - 09.30 WIB</span>
+            <span class="tl-name">Foto Kelas 9A dan 9B</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">09.30 - 09.40 WIB</span>
+            <span class="tl-name">Penampilan Tari Sigrak</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">09.40 - 10.00 WIB</span>
+            <span class="tl-name">Foto Kelas 9C dan 9D</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">10.00 - 10.10 WIB</span>
+            <span class="tl-name">Penampilan Paduan Suara</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">10.10 - 10.40 WIB</span>
+            <span class="tl-name">Foto Kelas 9E, 9F, dan 9G</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">10.40 - 10.50 WIB</span>
+            <span class="tl-name">Penampilan Solo Vocal</span>
+          </div>
+        </div>
+        <div class="tl-item fi">
+          <div class="tl-dot"><div class="tl-inner-dot"></div></div>
+          <div class="tl-card">
+            <span class="tl-time">10.50 - 11.00 WIB</span>
+            <span class="tl-name">Penutup</span>
           </div>
         </div>
       </div>
@@ -491,28 +584,35 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
           <button class="carousel-btn" id="slideNext"><i class="fa-solid fa-chevron-right"></i></button>
 
           <div class="slide active">
-            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop" alt="Kegiatan Sekolah">
-            <div class="slide-cap">
-              <p>Momen kebersamaan kelulusan angkatan ini.</p>
-            </div>
+            <img src="galeri1.jpg" alt="Kenangan 1">
           </div>
           <div class="slide">
-            <img src="https://images.unsplash.com/photo-1571260899304-425070114f55?q=80&w=800&auto=format&fit=crop" alt="Foto Siswa">
-            <div class="slide-cap">
-              <p>Mengukir prestasi dan semangat belajar.</p>
-            </div>
+            <img src="galeri2.jpg" alt="Kenangan 2">
           </div>
           <div class="slide">
-            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&auto=format&fit=crop" alt="Gedung Sekolah">
-            <div class="slide-cap">
-              <p>Lingkungan belajar di SMPN 1 Pringapus.</p>
-            </div>
+            <img src="galeri3.jpg" alt="Kenangan 3">
+          </div>
+          <div class="slide">
+            <img src="galeri4.jpg" alt="Kenangan 4">
+          </div>
+          <div class="slide">
+            <img src="galeri5.jpg" alt="Kenangan 5">
+          </div>
+          <div class="slide">
+            <img src="galeri6.jpg" alt="Kenangan 6">
+          </div>
+          <div class="slide">
+            <img src="galeri7.jpg" alt="Kenangan 7">
           </div>
         </div>
         <div class="carousel-dots">
           <button class="dot on" onclick="currentSlide(0)"></button>
           <button class="dot" onclick="currentSlide(1)"></button>
           <button class="dot" onclick="currentSlide(2)"></button>
+          <button class="dot" onclick="currentSlide(3)"></button>
+          <button class="dot" onclick="currentSlide(4)"></button>
+          <button class="dot" onclick="currentSlide(5)"></button>
+          <button class="dot" onclick="currentSlide(6)"></button>
         </div>
       </div>
     </div>
@@ -525,7 +625,7 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
       <div class="quote-text">
         Pendidikan adalah tiket ke masa depan. Hari esok dimiliki oleh orang-orang yang mempersiapkan dirinya sejak hari ini.
       </div>
-      <div class="quote-tagline">Malcom X</div>
+      <div class="quote-tagline"></div>
       <div class="quote-slogan">Teruslah Belajar dan Berkarya</div>
     </div>
   </section>
@@ -544,8 +644,8 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
       <div class="lokasi-card fi">
         <i class="fa-solid fa-map-location-dot lokasi-icon"></i>
         <div class="lokasi-name">SMPN 1 Pringapus</div>
-        <div class="lokasi-sub">Jl. Raya Pringapus - Klepu Km. 03, Kab. Semarang, Jawa Tengah</div>
-        <a href="https://maps.app.goo.gl/xxx" target="_blank" class="lokasi-btn">
+        <div class="lokasi-sub">Jl. Siswa Wonoyoso Kec. Pringapus Kab. Semarang</div>
+        <a href="https://maps.google.com/?q=SMP+Negeri+1+Pringapus,+Kabupaten+Semarang" target="_blank" class="lokasi-btn">
           <i class="fa-solid fa-location-arrow"></i> Buka di Google Maps
         </a>
       </div>
@@ -555,7 +655,7 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <img src="logo.png" alt="Logo" class="ft-logo">
+      <div class="logo-glow-ft"><img src="NEW.jpg" alt="Logo" class="ft-logo"></div>
       <div class="ft-title">SMP NEGERI 1 PRINGAPUS</div>
       <div class="ft-copy">
         &copy; 2026 Undangan Pelepasan Kelas IX.<br>
@@ -564,6 +664,12 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
     </div>
   </footer>
 
+  <!-- AUDIO & MUSIC BTN -->
+  <audio id="bgMusic" src="backsound.mp3.mp3" loop></audio>
+  <button id="music-btn" onclick="toggleMusic()">
+    <i class="fa-solid fa-compact-disc"></i>
+  </button>
+
   <!-- SCRIPT -->
   <script>
     // FUNGSI BUKA UNDANGAN DARI LOADING SCREEN
@@ -571,7 +677,30 @@ footer{padding:60px 20px 40px;background:var(--black2);text-align:center;border-
       const loadingScreen = document.getElementById('loading');
       loadingScreen.classList.add('hidden');
       document.body.style.overflowY = 'auto'; // izinkan scroll
-      // play background music if any
+      
+      // Mainkan musik
+      const bgMusic = document.getElementById('bgMusic');
+      const musicBtn = document.getElementById('music-btn');
+      if (bgMusic) {
+        bgMusic.play().then(() => {
+          musicBtn.classList.add('show');
+          musicBtn.querySelector('i').classList.add('spin');
+        }).catch(e => console.log('Autoplay dicegah:', e));
+      }
+    }
+
+    // FUNGSI PLAY/PAUSE MUSIK
+    function toggleMusic() {
+      const bgMusic = document.getElementById('bgMusic');
+      const icon = document.querySelector('#music-btn i');
+      
+      if (bgMusic.paused) {
+        bgMusic.play();
+        icon.classList.add('spin');
+      } else {
+        bgMusic.pause();
+        icon.classList.remove('spin');
+      }
     }
 
     // AWALAN: Kunci scroll saat loading muncul
